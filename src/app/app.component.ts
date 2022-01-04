@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'todo';
+  title = 'Day2DayList';
+  message = 'Welcome to one of a kind app';
+
 }
