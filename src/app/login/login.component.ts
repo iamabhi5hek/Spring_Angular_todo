@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     if(this.username === "username" && this.password === 'dummy'){
       //redirect to welcome page so need to use instance of router so will use dependecy injection
       //need to declare as constructor argument
-      this.router.navigate(['welcome'])
+      this.router.navigate(['welcome', this.username])
       this.invalidLogin = false
     }
     else{
