@@ -10,3 +10,13 @@
     <a routerLink="/todos">here</a>
     </div>  
 </div>
+
+<div class="container">
+    Click here to get customised welcome page 
+    <button (click)="getWelcomeMesage()" class="btn btn-success">Click Here</button>
+</div>
+
+<div class="container" *ngIf="welcomeMessageFromService">
+    <h2>Your personalised message : </h2>
+    {{welcomeMessageFromService}}
+</div>
