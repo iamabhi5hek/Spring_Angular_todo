@@ -1,18 +1,38 @@
-<h3>Update your todo</h3>
+    <h3>Update your todo</h3>
 
-<div class="container">
-    <fieldset>
-        <label>Description</label>
-        <input type="text" [(ngModel)] = "todo.description" class="form-control" name="description" required="required">
-    </fieldset>
-    <br>
-    <fieldset class="form-group">
-        <label>Target Date</label>
-        <input type="date" [ngModel] = "todo.targetDate | date:'yyyy-MM-dd'" 
-        (ngModelChange)="todo.targetDate = $event"
-        class="form-control" name="targetDate" required="required">
-    </fieldset>
+    <div class="container">
 
-    <button class="btn btn-success" (click)="saveTodo()">Save</button>
-    
-</div>
+        <div class="alert alert-warning" *ngIf="todoForm.invalid && todoForm.dirty">
+            Enter valid values
+        </div>
+        <div class="alert alert-warning" *ngIf="todoForm.invalid && targetDate.dirty">
+            Enter valid target Date
+        </div>
+        <div class="alert alert-warning" *ngIf="todoForm.invalid && description.dirty">
+            Enter formal description
+        </div>
+
+        <form (ngSubmit)="!todoForm.invalid && saveTodo()"  #todoForm="ngForm">
+            <fieldset>
+                <label>Description</label>
+                <input type="text" 
+                #description="ngModel"
+                [(ngModel)] = "todo.description" 
+                class="form-control" name="description"
+                required="required" minlength="5">
+            </fieldset>
+            <br>
+            <fieldset class="form-group">
+                <label>Target Date</label>
+                <input type="date" 
+                #targetDate="ngModel"
+                [ngModel] = "todo.targetDate | date:'yyyy-MM-dd'" 
+                (ngModelChange)="todo.targetDate = $event"
+                class="form-control" 
+                name="targetDate" 
+                required="required">
+            </fieldset>
+        
+            <button type="submit" class="btn btn-success" >Save</button>
+        </form>       
+    </div>
