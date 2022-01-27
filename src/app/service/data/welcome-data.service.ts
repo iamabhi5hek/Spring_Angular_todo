@@ -16,28 +16,17 @@
 
   executeHelloWorldBeanServiceWithPathVariable(name:string){
 
-    let basicString = this.createBasicAuthenticationHttpHeader();
+    // let basicString = this.createBasicAuthenticationHttpHeader();
 
-    let headers = new HttpHeaders({
-       Authorization : basicString 
-    });
+    // let headers = new HttpHeaders({
+    //    Authorization : basicString 
+    // });
 
     return this.http.get<HelloWorldBean>(`http://localhost:8080/hello-world/path-variable/${name}`,
-      {headers});
+      // {headers}
+      );
   }
-
-  createBasicAuthenticationHttpHeader(){
-    let username = 'username';
-    let password = 'dummy';
-
-    let basicAuthString = 'Basic ' + window.btoa(username + ":" + password);
-
-    return basicAuthString;
-
-  }
-
-
-  }
+}
 
   export class HelloWorldBean{
 
